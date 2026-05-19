@@ -203,31 +203,30 @@
 
     /* Display lockup */
     .display {
-      font-family: 'Bebas Neue', sans-serif;
-      line-height: 0.85;
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      line-height: 0.88;
       text-align: center;
       margin: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
       width: 100%;
-      font-weight: 400;
     }
     .display__word {
       display: block;
-      font-size: clamp(5.5rem, 20vw, 16rem);
+      font-size: clamp(5rem, 19vw, 15rem);
       position: relative;
+      letter-spacing: -0.025em;
     }
     .display__word--toro {
       color: var(--red-hot);
-      letter-spacing: -0.015em;
       text-shadow: 0 0 60px rgba(232, 32, 32, 0.3), 0 0 120px rgba(232, 32, 32, 0.1);
       order: 1;
       animation: fadeUp 1s ease 0s both;
     }
     .display__word--viejo {
       color: var(--cream);
-      letter-spacing: 0.1em;
       order: 2;
       animation: fadeUp 1s ease 0.12s both;
     }
@@ -549,11 +548,13 @@
       opacity: 0.5;
     }
     .manifesto__line {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.8rem, 7.5vw, 6.5rem);
-      line-height: 0.88;
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(2.6rem, 7vw, 6rem);
+      line-height: 0.92;
+      letter-spacing: -0.02em;
       color: var(--cream);
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.65rem;
       opacity: 0;
       transform: translateY(24px);
       transition: opacity 0.9s ease, transform 0.9s ease;
@@ -566,7 +567,7 @@
     .manifesto__line:nth-child(4) { transition-delay: 0.24s; }
     .manifesto__line--accent {
       color: var(--red-hot);
-      font-size: clamp(3.5rem, 10vw, 9rem);
+      font-size: clamp(3.2rem, 9.5vw, 8.5rem);
       margin-top: 0.5rem;
       text-shadow: 0 0 80px rgba(232, 32, 32, 0.2);
       transition-delay: 0.38s !important;
@@ -835,7 +836,7 @@
         margin: -2.5rem 0 -2rem;
       }
       .display__word--viejo { order: 3; }
-      .display__word { font-size: clamp(6.5rem, 16vw, 16rem); }
+      .display__word { font-size: clamp(6rem, 15vw, 15rem); }
 
       .footer {
         flex-direction: row;
