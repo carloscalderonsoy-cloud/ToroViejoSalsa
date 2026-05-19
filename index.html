@@ -282,33 +282,24 @@
     }
 
     /* Brand attribute strip */
-    .attrs {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      margin: 2rem 0 0;
-      gap: 0.5rem 0;
+    .attrs-line {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(0.82rem, 1.4vw, 1rem);
+      color: var(--cream-dim);
+      text-align: center;
+      letter-spacing: 0.04em;
+      margin: 1.75rem auto 0;
+      max-width: 600px;
+      line-height: 1.6;
       animation: fadeUp 1s ease 0.4s both;
     }
-    .attr {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 0 1.1rem;
-      border-left: 1px solid rgba(196, 26, 26, 0.28);
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.28em;
-      color: var(--cream-dim);
-    }
-    .attr:first-child { border-left: none; }
-    .attr__dot {
-      width: 5px; height: 5px;
-      background: var(--red);
-      border-radius: 50%;
-      flex-shrink: 0;
-      box-shadow: 0 0 8px rgba(196,26,26,0.7);
+    .attrs-line .sep {
+      color: var(--red);
+      font-style: normal;
+      margin: 0 0.55em;
+      opacity: 0.7;
     }
 
     /* CTAs */
@@ -805,8 +796,7 @@
       .display__word { font-size: clamp(4.5rem, 20vw, 8rem); }
       .display__bottle { width: clamp(150px, 44vw, 200px); margin-top: 1rem; }
       .hero__tagline { margin-top: 2rem; font-size: 1.3rem; max-width: 360px; }
-      .attrs { gap: 0.4rem 0; }
-      .attr { padding: 0 0.7rem; font-size: 0.56rem; }
+      .attrs-line { font-size: 0.78rem; margin-top: 1.5rem; }
       .lifestyle__caption, .lifestyle__badge { font-size: 0.55rem; }
       .lifestyle__badge { padding: 0.35rem 0.7rem; font-size: 0.7rem; }
       .lifestyle__frame { height: clamp(260px, 48vh, 400px); }
@@ -903,12 +893,9 @@
         El picante que <em>no pide perdón.</em>
       </p>
 
-      <ul class="attrs" aria-label="Atributos del producto">
-        <li class="attr"><span class="attr__dot"></span>HECHO A MANO</li>
-        <li class="attr"><span class="attr__dot"></span>SIN CONSERVADORES</li>
-        <li class="attr"><span class="attr__dot"></span>CHILE DE VERDAD</li>
-        <li class="attr"><span class="attr__dot"></span>ORIGEN MX</li>
-      </ul>
+      <p class="attrs-line">
+        Hecho a mano<span class="sep">—</span>Sin conservadores<span class="sep">—</span>Chile de verdad<span class="sep">—</span>Origen MX
+      </p>
 
       <div class="ctas">
         <a class="btn-primary" href="https://wa.me/525500000000?text=Hola%2C%20quiero%20pedir%20Toro%20Viejo" target="_blank" rel="noopener">Pedir por WhatsApp</a>
