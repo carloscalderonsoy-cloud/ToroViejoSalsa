@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Toro Viejo — Salsa Picante Artesanal. Hecha a mano, sin conservadores, con ingredientes reales.">
+  <meta name="theme-color" content="#080503">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Toro Viejo — Salsa Picante Artesanal">
+  <meta property="og:description" content="El picante que no pide perdón.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://toroviejo.mx">
+  <meta property="og:image" content="/images/toro-viejo-lifestyle.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Toro Viejo">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Toro Viejo — Salsa Picante Artesanal">
+  <meta name="twitter:description" content="El picante que no pide perdón.">
+  <meta name="twitter:image" content="/images/toro-viejo-lifestyle.png">
+
+  <title>Toro Viejo — Salsa Picante Artesanal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --red: #C41A1A;
+      --red-hot: #E82020;
+      --flame: #E85C05;
+      --amber: #F2A619;
+      --cream: #FAF0E0;
+      --cream-dim: #C9A882;
+      --muted: #8A7060;
+      --bg: #080503;
+      --bg-2: #0F0805;
+      --bg-3: #160D08;
+      --border: rgba(196, 26, 26, 0.25);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+    body {
+      background: var(--bg);
+      color: var(--cream);
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-weight: 300;
+      line-height: 1.5;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Grain overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+    img, svg { display: block; max-width: 100%; }
+
+    /* ───── NAV ───── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1.25rem;
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      will-change: background-color;
+      transition: background-color 0.4s ease, border-color 0.4s ease;
+    }
+    .nav.scrolled {
+      background: rgba(8, 5, 3, 0.95);
+      border-bottom-color: var(--border);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .nav__brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.25rem;
+      letter-spacing: 0.18em;
+      color: var(--cream);
+    }
+    .nav__brand span { color: var(--red); }
+    .nav__links {
+      display: none;
+      gap: 2rem;
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.2em;
+      font-size: 0.85rem;
+      color: var(--cream-dim);
+    }
+    .nav__links a { transition: color 0.2s; }
+    .nav__links a:hover { color: var(--cream); }
+    .nav__cta {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.18em;
+      font-size: 0.85rem;
+      padding: 0.7rem 1.4rem;
+      background: var(--red);
+      color: var(--bg);
+      clip-path: polygon(2% 0%, 100% 0%, 98% 100%, 0% 100%);
+      transition: background-color 0.25s, transform 0.25s;
+    }
+    .nav__cta:hover { background: var(--red-hot); transform: translateY(-1px); }
+
+    /* ───── HERO ───── */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 5.5rem 1.25rem 5.5rem;
+      isolation: isolate;
+    }
+    #embers {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .hero__glow {
+      position: absolute;
+      left: 50%;
+      bottom: -20%;
+      transform: translateX(-50%);
+      width: 140%;
+      height: 90%;
+      pointer-events: none;
+      z-index: 0;
+      background: radial-gradient(ellipse at center,
+        rgba(196, 26, 26, 0.28) 0%,
+        rgba(232, 92, 5, 0.09) 40%,
+        transparent 70%);
+    }
+
+    /* Top meta rail */
+    .hero__rail-top {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 920px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      color: var(--cream-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+      text-align: center;
+      margin-bottom: 2rem;
+      animation: fadeUp 1s ease 0s both;
+    }
+    .rail__tick {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: var(--red);
+      border-radius: 50%;
+      box-shadow: 0 0 12px rgba(196, 26, 26, 0.8);
+      animation: pulseDot 2.4s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    .rail__sep { color: var(--red); opacity: 0.5; font-size: 0.55rem; }
+    .rail__item--accent { color: var(--red); }
+
+    /* Main typographic stage */
+    .hero__stage {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Display lockup */
+    .display {
+      font-family: 'Bebas Neue', sans-serif;
+      line-height: 0.85;
+      text-align: center;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      font-weight: 400;
+    }
+    .display__word {
+      display: block;
+      font-size: clamp(5.5rem, 20vw, 16rem);
+      position: relative;
+    }
+    .display__word--toro {
+      color: var(--red-hot);
+      letter-spacing: -0.015em;
+      text-shadow: 0 0 60px rgba(232, 32, 32, 0.3), 0 0 120px rgba(232, 32, 32, 0.1);
+      order: 1;
+      animation: fadeUp 1s ease 0s both;
+    }
+    .display__word--viejo {
+      color: var(--cream);
+      letter-spacing: 0.1em;
+      order: 2;
+      animation: fadeUp 1s ease 0.12s both;
+    }
+    .display__bottle {
+      order: 3;
+      position: relative;
+      display: block;
+      width: clamp(160px, 34vw, 230px);
+      margin: 1.5rem 0 0;
+      animation: bottleRise 1.4s cubic-bezier(.2,.7,.2,1) 0.35s both;
+      transform-style: preserve-3d;
+      transition: transform 0.1s ease-out;
+      will-change: transform;
+    }
+    .display__bottle::before {
+      content: '';
+      position: absolute;
+      inset: -15% -25%;
+      background: radial-gradient(ellipse at 50% 55%, rgba(232, 92, 5, 0.28), rgba(196, 26, 26, 0.1) 40%, transparent 70%);
+      z-index: -1;
+      pointer-events: none;
+    }
+    .display__bottle img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 30px 70px rgba(196, 26, 26, 0.5)) drop-shadow(0 12px 28px rgba(0, 0, 0, 0.8));
+      pointer-events: none;
+    }
+
+    @keyframes bottleRise {
+      from { opacity: 0; transform: translateY(40px) scale(0.96); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* Hero tagline — big moment */
+    .hero__tagline {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: clamp(1.55rem, 3.2vw, 2.6rem);
+      color: var(--cream);
+      margin: 2.5rem auto 0;
+      max-width: 680px;
+      line-height: 1.2;
+      text-align: center;
+      text-wrap: pretty;
+      animation: fadeUp 1s ease 0.3s both;
+    }
+    .hero__tagline em {
+      font-style: normal;
+      color: var(--red-hot);
+    }
+
+    /* Brand attribute strip */
+    .attrs {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin: 2rem 0 0;
+      gap: 0.5rem 0;
+      animation: fadeUp 1s ease 0.4s both;
+    }
+    .attr {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0 1.1rem;
+      border-left: 1px solid rgba(196, 26, 26, 0.28);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.28em;
+      color: var(--cream-dim);
+    }
+    .attr:first-child { border-left: none; }
+    .attr__dot {
+      width: 5px; height: 5px;
+      background: var(--red);
+      border-radius: 50%;
+      flex-shrink: 0;
+      box-shadow: 0 0 8px rgba(196,26,26,0.7);
+    }
+
+    /* CTAs */
+    .ctas {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      align-items: center;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+      animation: fadeUp 1s ease 0.5s both;
+    }
+    .btn-primary {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.2em;
+      padding: 1rem 2rem;
+      background: var(--red);
+      color: var(--bg);
+      clip-path: polygon(2% 0%, 100% 0%, 98% 100%, 0% 100%);
+      transition: background-color 0.25s, transform 0.25s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--red-hot); transform: translateY(-2px); }
+
+    .btn-ghost {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.2em;
+      color: var(--cream-dim);
+      border-bottom: 1px solid rgba(201, 168, 130, 0.3);
+      padding: 0.4rem 0.1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.25s, border-color 0.25s;
+    }
+    .btn-ghost:hover { color: var(--cream); border-bottom-color: rgba(250, 240, 224, 0.7); }
+    .btn-ghost .arrow { display: inline-block; transition: transform 0.25s; }
+    .btn-ghost:hover .arrow { transform: translateX(4px); }
+
+    .scroll-indicator {
+      position: absolute;
+      left: 50%;
+      bottom: 2.5rem;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      z-index: 3;
+      pointer-events: none;
+    }
+    .scroll-indicator__text {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.4em;
+      color: var(--cream-dim);
+      opacity: 0.6;
+    }
+    .scroll-indicator__line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--red), transparent);
+      transform-origin: top center;
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+      50%      { opacity: 1;   transform: scaleY(1); }
+    }
+    @keyframes pulseDot {
+      0%, 100% { box-shadow: 0 0 8px rgba(196, 26, 26, 0.5); opacity: 0.7; }
+      50%      { box-shadow: 0 0 18px rgba(196, 26, 26, 1);   opacity: 1; }
+    }
+
+    /* ───── MARQUEE ───── */
+    .marquee {
+      background: var(--red);
+      padding: 0.9rem 0;
+      overflow: hidden;
+      position: relative;
+      z-index: 5;
+    }
+    .marquee__track {
+      display: inline-flex;
+      white-space: nowrap;
+      animation: marquee 22s linear infinite;
+      will-change: transform;
+    }
+    .marquee__group {
+      display: inline-flex;
+      align-items: center;
+      gap: 2.5rem;
+      padding-right: 2.5rem;
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.3em;
+      font-size: 0.95rem;
+      color: var(--bg);
+    }
+    .marquee__group span.dot {
+      width: 4px; height: 4px;
+      background: var(--bg);
+      border-radius: 50%;
+      display: inline-block;
+      opacity: 0.6;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ───── LIFESTYLE ───── */
+    .lifestyle {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      background: var(--bg);
+    }
+    .lifestyle__frame {
+      position: relative;
+      width: 100%;
+      height: clamp(320px, 62vh, 620px);
+      overflow: hidden;
+    }
+    .lifestyle__img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 38%;
+      filter: saturate(1.1) contrast(1.05) brightness(0.88);
+    }
+    .lifestyle__veil {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(to bottom, rgba(8,5,3,0.55) 0%, rgba(8,5,3,0.1) 35%, rgba(8,5,3,0.1) 65%, rgba(8,5,3,0.88) 100%),
+        linear-gradient(to right, rgba(8,5,3,0.55) 0%, transparent 30%, transparent 70%, rgba(8,5,3,0.55) 100%);
+    }
+    .lifestyle__statement {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      pointer-events: none;
+    }
+    .lifestyle__statement p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: clamp(1.6rem, 4vw, 3.2rem);
+      color: var(--cream);
+      line-height: 1.2;
+      text-shadow: 0 2px 30px rgba(8,5,3,0.8);
+      opacity: 0.92;
+    }
+    .lifestyle__caption {
+      position: absolute;
+      left: 1.5rem;
+      bottom: 1.25rem;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      color: var(--cream-dim);
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    .lifestyle__caption::before {
+      content: '';
+      width: 24px; height: 1px;
+      background: var(--red);
+    }
+    .lifestyle__badge {
+      position: absolute;
+      right: 1.5rem;
+      top: 1.25rem;
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.25em;
+      font-size: 0.85rem;
+      color: var(--cream);
+      padding: 0.45rem 0.9rem;
+      background: rgba(8, 5, 3, 0.55);
+      border: 1px solid rgba(250, 240, 224, 0.18);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .lifestyle__badge strong { color: var(--red); font-weight: 400; }
+
+    /* ───── MANIFESTO ───── */
+    .manifesto {
+      background: var(--bg-2);
+      padding: clamp(4rem, 11vh, 9rem) 1.25rem;
+      overflow: hidden;
+      position: relative;
+    }
+    .manifesto::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 1px; height: 60px;
+      background: linear-gradient(to bottom, var(--red), transparent);
+      opacity: 0.5;
+    }
+    .manifesto__inner {
+      max-width: 960px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .manifesto__eyebrow {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.4em;
+      color: var(--red);
+      margin-bottom: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .manifesto__eyebrow::before,
+    .manifesto__eyebrow::after {
+      content: '';
+      width: 40px; height: 1px;
+      background: var(--red);
+      opacity: 0.5;
+    }
+    .manifesto__line {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 7.5vw, 6.5rem);
+      line-height: 0.88;
+      color: var(--cream);
+      margin-bottom: 0.6rem;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .manifesto__line.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .manifesto__line:nth-child(3) { transition-delay: 0.12s; }
+    .manifesto__line:nth-child(4) { transition-delay: 0.24s; }
+    .manifesto__line--accent {
+      color: var(--red-hot);
+      font-size: clamp(3.5rem, 10vw, 9rem);
+      margin-top: 0.5rem;
+      text-shadow: 0 0 80px rgba(232, 32, 32, 0.2);
+      transition-delay: 0.38s !important;
+    }
+    .manifesto__line:last-child { margin-bottom: 0; }
+
+    /* ───── HEAT METER ───── */
+    .heat {
+      background: var(--bg-3);
+      padding: clamp(3.5rem, 9vh, 7rem) 1.25rem;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .heat__inner {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .heat__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1.5rem;
+    }
+    .heat__eyebrow {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.35em;
+      color: var(--muted);
+    }
+    .heat__variety {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.25em;
+      color: var(--red);
+    }
+    .heat__track {
+      position: relative;
+      height: 5px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 3px;
+      margin-bottom: 0.7rem;
+      overflow: visible;
+    }
+    .heat__fill {
+      position: absolute;
+      top: 0; left: 0;
+      width: 70%;
+      height: 100%;
+      background: linear-gradient(to right, var(--amber), var(--flame), var(--red-hot));
+      border-radius: 3px;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 1.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .heat__fill.is-active { transform: scaleX(1); }
+    .heat__glow {
+      position: absolute;
+      top: -6px; left: 0;
+      width: 70%;
+      height: 17px;
+      background: linear-gradient(to right, transparent 10%, rgba(232,92,5,0.25), rgba(232,32,32,0.55));
+      filter: blur(5px);
+      border-radius: 8px;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 1.6s cubic-bezier(0.2, 0.8, 0.2, 1) 0.05s;
+    }
+    .heat__glow.is-active { transform: scaleX(1); }
+    .heat__scale {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.5rem;
+      letter-spacing: 0.25em;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+    }
+    .heat__scale--accent { color: var(--red); }
+    .heat__reading {
+      text-align: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 10vw, 6.5rem);
+      line-height: 1;
+      color: var(--cream);
+      letter-spacing: 0.05em;
+    }
+    .heat__reading .denom {
+      color: var(--muted);
+      font-size: 0.45em;
+      vertical-align: middle;
+    }
+    .heat__sub {
+      text-align: center;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.35em;
+      color: var(--muted);
+      margin-top: 0.5rem;
+    }
+
+    /* ───── SOCIAL STRIP ───── */
+    .social {
+      background: var(--bg);
+      padding: clamp(3.5rem, 9vh, 7rem) 1.25rem;
+    }
+    .social__header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .social__at {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.38em;
+      color: var(--red);
+      display: block;
+      margin-bottom: 0.6rem;
+    }
+    .social__title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 8vw, 6rem);
+      letter-spacing: 0.08em;
+      color: var(--cream);
+      line-height: 0.9;
+    }
+    .social__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.4rem;
+      max-width: 840px;
+      margin: 0 auto 2.5rem;
+    }
+    .social__card {
+      position: relative;
+      aspect-ratio: 1;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .social__card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease, filter 0.5s ease;
+      filter: saturate(0.8) brightness(0.8);
+    }
+    .social__card:hover img {
+      transform: scale(1.06);
+      filter: saturate(1.05) brightness(0.9);
+    }
+    .social__card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(8,5,3,0.75) 0%, transparent 55%);
+      display: flex;
+      align-items: flex-end;
+      padding: 0.85rem;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+    .social__card:hover .social__card-overlay { opacity: 1; }
+    .social__handle {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      color: var(--cream-dim);
+    }
+    .social__cta-wrap { text-align: center; }
+    .social__cta {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.28em;
+      color: var(--cream-dim);
+      border-bottom: 1px solid rgba(201, 168, 130, 0.3);
+      padding: 0.4rem 0.1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: color 0.25s, border-color 0.25s;
+    }
+    .social__cta:hover { color: var(--cream); border-bottom-color: rgba(250, 240, 224, 0.7); }
+    .social__cta .arrow { display: inline-block; transition: transform 0.25s; }
+    .social__cta:hover .arrow { transform: translateX(4px); }
+
+    /* ───── FOOTER ───── */
+    .footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 2.5rem 1.25rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: center;
+      text-align: center;
+    }
+    .footer__brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.2em;
+      color: var(--cream);
+      opacity: 0.4;
+    }
+    .footer__copy {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      opacity: 0.6;
+    }
+    .footer__social {
+      display: flex;
+      gap: 1.5rem;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      color: var(--cream-dim);
+    }
+    .footer__social a { transition: color 0.2s; }
+    .footer__social a:hover { color: var(--red); }
+
+    /* ───── MOBILE ───── */
+    @media (max-width: 560px) {
+      .nav { padding: 1rem; }
+      .nav__brand { font-size: 1.05rem; }
+      .nav__cta { padding: 0.6rem 1.1rem; font-size: 0.75rem; }
+      .ctas { gap: 0.9rem; flex-direction: column; width: 100%; }
+      .btn-primary { width: 100%; max-width: 320px; padding: 1.1rem 1.5rem; }
+      .scroll-indicator { bottom: 1.25rem; }
+      .scroll-indicator__line { height: 24px; }
+      .hero__rail-top {
+        font-size: 0.52rem;
+        letter-spacing: 0.22em;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+      }
+      .hero__rail-top .rail__sep { display: none; }
+      .display__word { font-size: clamp(4.5rem, 20vw, 8rem); }
+      .display__bottle { width: clamp(150px, 44vw, 200px); margin-top: 1rem; }
+      .hero__tagline { margin-top: 2rem; font-size: 1.3rem; max-width: 360px; }
+      .attrs { gap: 0.4rem 0; }
+      .attr { padding: 0 0.7rem; font-size: 0.56rem; }
+      .lifestyle__caption, .lifestyle__badge { font-size: 0.55rem; }
+      .lifestyle__badge { padding: 0.35rem 0.7rem; font-size: 0.7rem; }
+      .lifestyle__frame { height: clamp(260px, 48vh, 400px); }
+      .lifestyle__statement p { font-size: 1.4rem; }
+      .manifesto__line { font-size: clamp(2.2rem, 8vw, 4rem); }
+      .manifesto__line--accent { font-size: clamp(2.8rem, 11vw, 6rem); }
+      .social__grid { grid-template-columns: repeat(2, 1fr); }
+      .social__card:nth-child(3) { display: none; }
+    }
+
+    @media (max-width: 380px) {
+      .display__word { font-size: 4.2rem; }
+      .display__bottle { width: 148px; margin-top: 0.75rem; }
+    }
+
+    @media (min-width: 900px) {
+      .nav { padding: 1.5rem 2.5rem; }
+      .nav__links { display: flex; }
+      .nav__brand { font-size: 1.35rem; }
+      .hero { padding: 7rem 3rem 5.5rem; }
+
+      /* Desktop sandwich: TORO / BOTTLE / VIEJO */
+      .display__word--toro  { order: 1; }
+      .display__bottle {
+        order: 2;
+        width: clamp(210px, 21vw, 290px);
+        margin: -2.5rem 0 -2rem;
+      }
+      .display__word--viejo { order: 3; }
+      .display__word { font-size: clamp(6.5rem, 16vw, 16rem); }
+
+      .footer {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+        padding: 3rem 2.5rem;
+      }
+      .btn-primary, .nav__cta {
+        clip-path: polygon(3% 0%, 100% 0%, 97% 100%, 0% 100%);
+      }
+      .lifestyle__caption { left: 2.5rem; bottom: 1.75rem; }
+      .lifestyle__badge { right: 2.5rem; top: 1.75rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .marquee__track { animation-play-state: paused; }
+      .scroll-indicator__line { animation: none; opacity: 0.6; }
+      .manifesto__line { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="nav" data-screen-label="Nav">
+    <a class="nav__brand" href="#top">TORO <span>VIEJO</span></a>
+    <div class="nav__links" aria-hidden="true">
+      <a href="#historia">Historia</a>
+      <a href="#producto">Producto</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <a class="nav__cta" href="https://wa.me/525500000000?text=Hola%2C%20quiero%20pedir%20Toro%20Viejo" target="_blank" rel="noopener">Pedir</a>
+  </nav>
+
+  <section class="hero" id="top" data-screen-label="Hero">
+
+    <canvas id="embers" aria-hidden="true"></canvas>
+    <div class="hero__glow" aria-hidden="true"></div>
+
+    <div class="hero__rail-top" aria-hidden="true">
+      <span class="rail__tick"></span>
+      <span>EST · MMXXIV</span>
+      <span class="rail__sep">/</span>
+      <span class="rail__item--accent">SALSA PICANTE ARTESANAL</span>
+      <span class="rail__sep">/</span>
+      <span>HECHO EN MÉXICO</span>
+      <span class="rail__tick"></span>
+    </div>
+
+    <div class="hero__stage">
+      <h1 class="display">
+        <span class="display__word display__word--toro">TORO</span>
+        <span class="display__bottle" id="bottle">
+          <img src="images/toro-viejo-bottle.png" alt="Botella de Toro Viejo Salsa Picante Clásica 300ml" width="1024" height="1024" fetchpriority="high" decoding="async">
+        </span>
+        <span class="display__word display__word--viejo">VIEJO</span>
+      </h1>
+
+      <p class="hero__tagline">
+        El picante que <em>no pide perdón.</em>
+      </p>
+
+      <ul class="attrs" aria-label="Atributos del producto">
+        <li class="attr"><span class="attr__dot"></span>HECHO A MANO</li>
+        <li class="attr"><span class="attr__dot"></span>SIN CONSERVADORES</li>
+        <li class="attr"><span class="attr__dot"></span>CHILE DE VERDAD</li>
+        <li class="attr"><span class="attr__dot"></span>ORIGEN MX</li>
+      </ul>
+
+      <div class="ctas">
+        <a class="btn-primary" href="https://wa.me/525500000000?text=Hola%2C%20quiero%20pedir%20Toro%20Viejo" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+        <a class="btn-ghost" href="https://instagram.com/toroviejo_salsapicante" target="_blank" rel="noopener">
+          Síguenos <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="scroll-indicator" aria-hidden="true">
+      <span class="scroll-indicator__text">SCROLL</span>
+      <span class="scroll-indicator__line"></span>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <div class="marquee__group">
+        <span>EL AUTÉNTICO</span><span class="dot"></span>
+        <span>EL QUE PICA DE VERDAD</span><span class="dot"></span>
+        <span>SIN PEDIR PERMISO</span><span class="dot"></span>
+        <span>DESDE LA COCINA</span><span class="dot"></span>
+        <span>TORO VIEJO</span><span class="dot"></span>
+        <span>CHILE DE VERDAD</span><span class="dot"></span>
+        <span>SIN CONCESIONES</span><span class="dot"></span>
+        <span>HAZLO TUYO</span><span class="dot"></span>
+      </div>
+      <div class="marquee__group">
+        <span>EL AUTÉNTICO</span><span class="dot"></span>
+        <span>EL QUE PICA DE VERDAD</span><span class="dot"></span>
+        <span>SIN PEDIR PERMISO</span><span class="dot"></span>
+        <span>DESDE LA COCINA</span><span class="dot"></span>
+        <span>TORO VIEJO</span><span class="dot"></span>
+        <span>CHILE DE VERDAD</span><span class="dot"></span>
+        <span>SIN CONCESIONES</span><span class="dot"></span>
+        <span>HAZLO TUYO</span><span class="dot"></span>
+      </div>
+    </div>
+  </div>
+
+  <section class="lifestyle" aria-label="Toro Viejo en la cocina" data-screen-label="Lifestyle">
+    <div class="lifestyle__frame">
+      <img class="lifestyle__img" src="images/toro-viejo-lifestyle.png" alt="Toro Viejo sobre tabla de madera con chiles, ajo y cilantro" loading="lazy" decoding="async" width="1024" height="1024">
+      <div class="lifestyle__veil" aria-hidden="true"></div>
+      <div class="lifestyle__statement" aria-hidden="true">
+        <p>Para los que saben<br>lo que quieren.</p>
+      </div>
+      <div class="lifestyle__badge">LA <strong>CLÁSICA</strong></div>
+      <div class="lifestyle__caption">CHILE · JITOMATE · AJO · SAL · VINAGRE</div>
+    </div>
+  </section>
+
+  <section class="manifesto" aria-label="Manifiesto Toro Viejo" id="historia">
+    <div class="manifesto__inner">
+      <div class="manifesto__eyebrow">QUIÉNES SOMOS</div>
+      <p class="manifesto__line">NO SOMOS FINOLIS.</p>
+      <p class="manifesto__line">SOMOS LOS QUE LE<br>ECHAMOS AÑO A LA RECETA.</p>
+      <p class="manifesto__line manifesto__line--accent">TORO VIEJO.<br>SALSA. PUNTO.</p>
+    </div>
+  </section>
+
+  <section class="heat" aria-label="Nivel de picante" id="producto">
+    <div class="heat__inner">
+      <div class="heat__header">
+        <span class="heat__eyebrow">ÍNDICE DE CALOR</span>
+        <span class="heat__variety">LA CLÁSICA</span>
+      </div>
+      <div class="heat__track">
+        <div class="heat__fill" id="heatFill"></div>
+        <div class="heat__glow" id="heatGlow"></div>
+      </div>
+      <div class="heat__scale">
+        <span>TIBIO</span>
+        <span>MEDIO</span>
+        <span>FUERTE</span>
+        <span class="heat__scale--accent">BRUTAL</span>
+      </div>
+      <div class="heat__reading">7<span class="denom"> / 10</span></div>
+      <div class="heat__sub">UNIDADES DE CALOR TORO VIEJO</div>
+    </div>
+  </section>
+
+  <section class="social" aria-label="Toro Viejo en redes" id="contacto">
+    <div class="social__header">
+      <span class="social__at">@TOROVIEJO_SALSAPICANTE</span>
+      <h2 class="social__title">EN ACCIÓN</h2>
+    </div>
+    <div class="social__grid">
+      <a class="social__card" href="https://instagram.com/toroviejo_salsapicante" target="_blank" rel="noopener" aria-label="Ver en Instagram">
+        <img src="images/toro-viejo-lifestyle.png" alt="Toro Viejo en la cocina" loading="lazy" style="object-position: 28% center;">
+        <div class="social__card-overlay">
+          <span class="social__handle">@toroviejo_salsapicante</span>
+        </div>
+      </a>
+      <a class="social__card" href="https://instagram.com/toroviejo_salsapicante" target="_blank" rel="noopener" aria-label="Ver en Instagram">
+        <img src="images/toro-viejo-lifestyle.png" alt="Toro Viejo en la cocina" loading="lazy" style="object-position: 52% 30%;">
+        <div class="social__card-overlay">
+          <span class="social__handle">@toroviejo_salsapicante</span>
+        </div>
+      </a>
+      <a class="social__card" href="https://instagram.com/toroviejo_salsapicante" target="_blank" rel="noopener" aria-label="Ver en Instagram">
+        <img src="images/toro-viejo-lifestyle.png" alt="Toro Viejo en la cocina" loading="lazy" style="object-position: 76% center;">
+        <div class="social__card-overlay">
+          <span class="social__handle">@toroviejo_salsapicante</span>
+        </div>
+      </a>
+    </div>
+    <div class="social__cta-wrap">
+      <a class="social__cta" href="https://instagram.com/toroviejo_salsapicante" target="_blank" rel="noopener">
+        SÍGUENOS EN INSTAGRAM <span class="arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__brand">TORO VIEJO</div>
+    <div class="footer__copy">© 2026 TORO VIEJO · SALSA PICANTE ARTESANAL</div>
+    <div class="footer__social">
+      <a href="https://instagram.com/toroviejo_salsapicante" target="_blank" rel="noopener">INSTAGRAM</a>
+      <a href="https://wa.me/525500000000" target="_blank" rel="noopener">WHATSAPP</a>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    'use strict';
+
+    // ─── NAV scroll ───
+    var nav = document.getElementById('nav');
+    var wasScrolled = false;
+    function onScroll() {
+      var isScrolled = window.scrollY > 24;
+      if (isScrolled !== wasScrolled) {
+        nav.classList.toggle('scrolled', isScrolled);
+        wasScrolled = isScrolled;
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // ─── EMBERS canvas (intensified) ───
+    var canvas = document.getElementById('embers');
+    var ctx = canvas.getContext('2d');
+
+    function resize() {
+      var parent = canvas.parentElement;
+      canvas.width  = parent.offsetWidth  || window.innerWidth;
+      canvas.height = parent.offsetHeight || window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    var isMobile = window.matchMedia('(max-width: 700px)').matches;
+    var PARTICLE_COUNT = isMobile ? 50 : 110;
+    var EMBER_COLORS = ['#C41A1A', '#E85C05', '#F2A619', '#E82020'];
+    var particles = [];
+
+    function makeParticle(initial) {
+      return {
+        x: Math.random() * canvas.width,
+        y: initial ? Math.random() * canvas.height : canvas.height + 10,
+        vx: (Math.random() - 0.5) * 0.65,
+        vy: -(Math.random() * 0.85 + 0.35),
+        size: Math.random() * 2.5 + 0.7,
+        opacity: Math.random() * 0.75 + 0.35,
+        decay: Math.random() * 0.005 + 0.0018,
+        color: EMBER_COLORS[Math.floor(Math.random() * EMBER_COLORS.length)]
+      };
+    }
+
+    for (var i = 0; i < PARTICLE_COUNT; i++) particles.push(makeParticle(true));
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (var i = 0; i < particles.length; i++) {
+        var p = particles[i];
+        p.x += p.vx + Math.sin(p.y * 0.018) * 0.35;
+        p.y += p.vy;
+        p.opacity -= p.decay;
+        p.size *= 0.9985;
+
+        if (p.opacity <= 0 || p.y < -10) {
+          particles[i] = makeParticle(false);
+          continue;
+        }
+
+        ctx.save();
+        ctx.globalAlpha = p.opacity;
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+      requestAnimationFrame(animate);
+    }
+
+    if (!reduceMotion) {
+      animate();
+    }
+
+    // ─── BOTTLE PARALLAX ───
+    if (!reduceMotion) {
+      var bottleEl  = document.getElementById('bottle');
+      var heroEl    = document.querySelector('.hero');
+      var targetX = 0, targetY = 0;
+      var currentX = 0, currentY = 0;
+      var rafId = null;
+
+      function lerp(a, b, t) { return a + (b - a) * t; }
+
+      function tickParallax() {
+        currentX = lerp(currentX, targetX, 0.07);
+        currentY = lerp(currentY, targetY, 0.07);
+        bottleEl.style.transform =
+          'perspective(700px) rotateY(' + currentX.toFixed(3) + 'deg) rotateX(' + currentY.toFixed(3) + 'deg)';
+        rafId = requestAnimationFrame(tickParallax);
+      }
+
+      if (heroEl && bottleEl && !isMobile) {
+        heroEl.addEventListener('mousemove', function (e) {
+          var rect = heroEl.getBoundingClientRect();
+          var dx = (e.clientX - rect.left - rect.width  / 2) / (rect.width  / 2);
+          var dy = (e.clientY - rect.top  - rect.height / 2) / (rect.height / 2);
+          targetX = dx * 7;
+          targetY = -dy * 4.5;
+          if (!rafId) tickParallax();
+        });
+
+        heroEl.addEventListener('mouseleave', function () {
+          targetX = 0;
+          targetY = 0;
+        });
+
+        document.addEventListener('visibilitychange', function () {
+          if (document.hidden && rafId) {
+            cancelAnimationFrame(rafId);
+            rafId = null;
+          } else if (!document.hidden && !rafId) {
+            tickParallax();
+          }
+        });
+      }
+    }
+
+    // ─── HEAT METER (trigger on scroll into view) ───
+    var heatFill = document.getElementById('heatFill');
+    var heatGlow = document.getElementById('heatGlow');
+    if (heatFill && heatGlow && 'IntersectionObserver' in window) {
+      var heatObs = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) {
+          heatFill.classList.add('is-active');
+          heatGlow.classList.add('is-active');
+          heatObs.disconnect();
+        }
+      }, { threshold: 0.5 });
+      heatObs.observe(heatFill.closest('.heat'));
+    }
+
+    // ─── MANIFESTO REVEAL ───
+    var mLines = document.querySelectorAll('.manifesto__line');
+    if (mLines.length && 'IntersectionObserver' in window) {
+      var mObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            mObs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.25 });
+      mLines.forEach(function (l) { mObs.observe(l); });
+    }
+
+  })();
+  </script>
+</body>
+</html>
